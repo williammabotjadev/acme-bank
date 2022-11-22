@@ -7,8 +7,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 import axios from 'axios';
+import { Box } from '@mui/system';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -32,7 +35,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function AccountsList() {
 
-  const [rows, setRows] = useState(null);
+  const [rows, setRows] = useState([]);
 
   function getAccounts()
   {
@@ -40,17 +43,42 @@ export default function AccountsList() {
     axios.get(url)
       .then((res) => {
         console.log(res);
+        setRows(res.data);
       })
       .catch((err) => console.log(err));
   }
 
   useEffect(() => {
     getAccounts();
+    console.log("Fired")
   }, []);
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+    <Box component='div'
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+    >
+    <TableContainer sx={{ maxWidth: '80%' }} component={Paper} style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        margin: '',
+        padding: '-20px 0px 20px -20px'
+      }}>
+
+          <Typography align="left" style={{
+            fontSize: '32px',
+            margin: '4px 520px 8px -360px'
+          }}>
+            Account List
+          </Typography>
+
+
+      <Table sx={{ maxWidth: '100%' }} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Account Number</StyledTableCell>
@@ -60,18 +88,21 @@ export default function AccountsList() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+          {rows.map((row, index) => (
+            <StyledTableRow key={index}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {row.account_number}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+              <StyledTableCell align="right">{row.account_type}</StyledTableCell>
+              <StyledTableCell align="right">{row.balance}</StyledTableCell>
+              <StyledTableCell align="right">
+                <Button variant="success">Withdraw</Button>
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    </Box>
   );
 }
