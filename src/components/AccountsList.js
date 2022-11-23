@@ -14,6 +14,8 @@ import axios from 'axios';
 import { Box } from '@mui/system';
 import { TableFooter } from '@mui/material';
 
+import './AccountsList.css';
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,

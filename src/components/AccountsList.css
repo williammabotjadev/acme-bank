@@ -1,0 +1,5 @@
+.MuiTableCell-root.MuiTableCell-head {
+    background: white !important;
+    color: black !important;
+    font-weight: bold !important;
+}
