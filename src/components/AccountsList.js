@@ -46,7 +46,6 @@ export default function AccountsList() {
     let url = "http://localhost:8080/api/accounts"
     axios.get(url)
       .then((res) => {
-        console.log(res);
         setRows(res.data);
         let temp = 0;
         res.data.forEach((el) => {
