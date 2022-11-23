@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 
 import axios from 'axios';
 import { Box } from '@mui/system';
+import { TableFooter } from '@mui/material';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -106,6 +107,19 @@ export default function AccountsList() {
             </StyledTableRow>
           ))}
         </TableBody>
+        <TableFooter>
+          <StyledTableCell>
+            <Typography>
+              Balance
+            </Typography>
+          </StyledTableCell>
+          <StyledTableCell>
+
+          </StyledTableCell>
+          <StyledTableCell align="right">
+            ZAR
+          </StyledTableCell>
+        </TableFooter>
       </Table>
     </TableContainer>
     </Box>
