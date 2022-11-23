@@ -96,7 +96,11 @@ export default function AccountsList() {
               <StyledTableCell align="right">{row.account_type}</StyledTableCell>
               <StyledTableCell align="right">{row.balance}</StyledTableCell>
               <StyledTableCell align="right">
-                <Button variant="success">Withdraw</Button>
+                <Button color="success" variant="contained"
+                  disabled={row.account_type === "savings" ? parseFloat(row.balance) > 0 ? false : true : parseFloat(row.balance) > -500 ? false : true}
+                >
+                  Withdraw
+                </Button>
               </StyledTableCell>
             </StyledTableRow>
           ))}
