@@ -37,6 +37,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function AccountsList() {
 
   const [rows, setRows] = useState([]);
+  const [total, setTotal] = useState(0);
 
   function getAccounts()
   {
@@ -45,13 +46,18 @@ export default function AccountsList() {
       .then((res) => {
         console.log(res);
         setRows(res.data);
+        let temp = 0;
+        res.data.forEach((el) => {
+          temp += parseFloat(el.balance);
+        })
+
+        setTotal(state => temp);
       })
       .catch((err) => console.log(err));
   }
 
   useEffect(() => {
     getAccounts();
-    console.log("Fired")
   }, []);
 
   return (
@@ -128,7 +134,7 @@ export default function AccountsList() {
                 fontSize: '24px'
               }}
           >
-            ZAR
+            ZAR {total.toLocaleString()}
           </StyledTableCell>
         </TableFooter>
       </Table>
