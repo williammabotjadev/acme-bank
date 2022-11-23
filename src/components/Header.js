@@ -40,7 +40,7 @@ function Header(props) {
       <AppBar component="nav"
         style={{
           color: 'white',
-          background: 'crimson'
+          backgroundImage:  `linear-gradient(to right, rgba(220, 20, 60, 1), rgba(178, 34, 34, 1))`
         }}
       >
         <Toolbar>
