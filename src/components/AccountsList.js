@@ -59,7 +59,8 @@ export default function AccountsList() {
       style={{
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'rgba(224, 224, 224, 1)'
       }}
     >
     <TableContainer sx={{ maxWidth: '80%' }} component={Paper} style={{
@@ -67,7 +68,7 @@ export default function AccountsList() {
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        margin: '',
+        margin: '0px 0px 80px 0px',
         padding: '-20px 0px 20px -20px'
       }}>
 
@@ -83,8 +84,8 @@ export default function AccountsList() {
         <TableHead>
           <TableRow>
             <StyledTableCell>Account Number</StyledTableCell>
-            <StyledTableCell align="right">Account Type</StyledTableCell>
-            <StyledTableCell align="right">Balance</StyledTableCell>
+            <StyledTableCell align="left">Account Type</StyledTableCell>
+            <StyledTableCell align="left">Balance</StyledTableCell>
             <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
         </TableHead>
@@ -94,8 +95,8 @@ export default function AccountsList() {
               <StyledTableCell component="th" scope="row">
                 {row.account_number}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.account_type}</StyledTableCell>
-              <StyledTableCell align="right">{row.balance}</StyledTableCell>
+              <StyledTableCell align="left">{row.account_type}</StyledTableCell>
+              <StyledTableCell align="left" style={{ textAlign: 'left' }}>{row.balance[0] === "-" ? `-ZAR ${row.balance.substr(1)}` : `ZAR ${row.balance.substr(1)}`}</StyledTableCell>
               <StyledTableCell align="right">
                 <Button color="success" variant="contained"
                   disabled={row.account_type === "savings" ? parseFloat(row.balance) > 0 ? false : true : parseFloat(row.balance) > -500 ? false : true}
@@ -109,19 +110,31 @@ export default function AccountsList() {
         </TableBody>
         <TableFooter>
           <StyledTableCell>
-            <Typography>
+            <Typography
+              style={{
+                fontWeight: 'bold',
+                fontSize: '24px'
+              }}
+            >
               Balance
             </Typography>
           </StyledTableCell>
           <StyledTableCell>
 
           </StyledTableCell>
-          <StyledTableCell align="right">
+          <StyledTableCell align="left"
+              style={{
+                fontWeight: 'bold',
+                fontSize: '24px'
+              }}
+          >
             ZAR
           </StyledTableCell>
         </TableFooter>
       </Table>
     </TableContainer>
+    <br />
+    <br />
     </Box>
   );
 }
