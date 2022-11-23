@@ -98,6 +98,7 @@ export default function AccountsList() {
               <StyledTableCell align="right">
                 <Button color="success" variant="contained"
                   disabled={row.account_type === "savings" ? parseFloat(row.balance) > 0 ? false : true : parseFloat(row.balance) > -500 ? false : true}
+                  onClick={() => alert("Success")}
                 >
                   Withdraw
                 </Button>
