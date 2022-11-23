@@ -37,7 +37,12 @@ function Header(props) {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <AppBar component="nav">
+      <AppBar component="nav"
+        style={{
+          color: 'white',
+          background: 'crimson'
+        }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"

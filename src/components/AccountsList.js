@@ -80,7 +80,8 @@ export default function AccountsList() {
 
           <Typography align="left" style={{
             fontSize: '32px',
-            margin: '4px 520px 8px -360px'
+            margin: '4px 520px 8px -360px',
+            color: 'crimson'
           }}>
             Account List
           </Typography>
